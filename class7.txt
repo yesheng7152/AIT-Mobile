@@ -1,9 +1,0 @@
-Activity Back Stack
-  - Previous activity is stored in back Stack
-  - The current visible activity is on the top of the Stack
-  - The back button removes the top activity(close it)
-  - Each application have their own back stack
-
-  Life cycle calls:
-  activity A open activity B
-  On Pause for A-> OnCreate ofB, ->OnStart of B->OnResume of B ->OnStop of A
