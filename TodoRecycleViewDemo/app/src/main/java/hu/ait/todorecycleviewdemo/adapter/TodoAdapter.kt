@@ -80,6 +80,7 @@ class TodoAdapter : RecyclerView.Adapter<TodoAdapter.ViewHolder>, TodoTouchHelpe
         }.start()
     }
 
+
     override fun onDismissed(position: Int) {
         deleteTodo(position)
     }
