@@ -1,0 +1,60 @@
+onCreate() -> onStart() -> onResume()->(another activity)onPause ->onStop()
+ -> (another app needs memory, the process is killed) OnCreate()
+ -> (when the application in the back) onRestart()-> onStart()
+
+Adding a new method to another class without accessing and extending that specific class
+- Called extension method
+- fun Car.crash() in another class
+- Car = that other class name
+- crash() = new method
+
+Nullable type
+- By default value cant be null
+  - var a: Int = null (NOT ALLOWED)
+- The "?" operator allows null values
+  - var a:Int? = null (ALLOWED)
+  - var x:List<String?> =  listOf(null, null, null) (list of null elements)
+  - var x:List<String>? = null (a null list)
+- Null Testing
+  > var nullTest : Int? = null
+  > nullTest?.inc()
+- Elvis Operator
+  > var x:Int? = 4
+  > var y = x?.toString() ?: " "
+  - if x is null, then y gets the ""value
+- Double bang operator
+    > var x: Int? = null
+    > x!!.toString()
+    - kotlin.KotlinNullPointerException
+
+
+Android UI Highlight
+- View Hierarchy 1/2
+  - TextView
+  - Button
+  - ImageView
+  - Custom views (extending View)
+  - etc.
+-ViewGroup
+
+
+Clean Code
+- Basic Clean Code Principles
+  - Naming
+    - Small scope: long, descriptive name
+    - Big scope: short name
+  - Small Classes
+  - A method does only one thing
+  - Small methods
+    - Maximum ~ 4 lines!
+  - Few Aug.
+    - Maximum 3 Arguments
+  - No boolean Arguments
+  - No output Arguments
+
+Readability
+  - For great holiday season
+  - other developer could read it
+
+JAVA Fields vs Kotlin Properties
+- 
