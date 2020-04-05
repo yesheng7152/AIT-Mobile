@@ -5,10 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/layoutSplash"
+    android:gravity="center"
     android:orientation="vertical"
     tools:context=".SplashActivity">
 
 
+    <ImageView
+        android:layout_gravity="center"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/shopping_list_logo"
+        />
 
 
 </LinearLayout>
