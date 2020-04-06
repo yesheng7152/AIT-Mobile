@@ -15,6 +15,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:src="@drawable/shopping_list_logo"
+        android:contentDescription="@string/logo"
         />
 
 

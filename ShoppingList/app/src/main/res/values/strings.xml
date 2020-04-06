@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ShoppingList</string>
+    <string name="app_name">Shopping List</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
@@ -97,4 +97,23 @@
     </string-array>
     <string name="action_settings">Settings</string>
     <string name="shoppingList">Shopping List</string>
+    <string name="item_name">Item Name</string>
+    <string name="purchased">Purchased</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
+    <string name="select_item_type">Select Item Type:</string>
+    <string name="estimated_price">Estimated Price</string>
+    <string name="item_description">Item Description</string>
+    <string name="alredy_purchased">Alredy Purchased</string>
+    <string name="logo">logo</string>
+    <string name="create_a_new_item">Create a New Item</string>
+    <string name="edit_item">Edit Item</string>
+    <string name="add_item">Add Item</string>
+    <string name="cancel_item">Cancel Item</string>
+    <string name="item_name_error">This field can not be empty</string>
+    <string name="itemhandler_runtime_exception">The Activity is not implementing the ItemHandler interface.</string>
+    <string name="create_item">Create Item</string>
+    <string name="click_to_create_new">Click here to create new shopping items</string>
+    <string name="delete_list">Delete List</string>
+    <string name="click_to_delete_list">Click here to delete all items on the list</string>
 </resources>

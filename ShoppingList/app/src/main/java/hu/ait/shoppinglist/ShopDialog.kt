@@ -29,7 +29,7 @@ class ShopDialog : DialogFragment(){
             itemHandler = context
         } else {
             throw RuntimeException(
-                "The Activity is not implementing the TodoHandler interface.")
+                getString(R.string.itemhandler_runtime_exception))
         }
     }
 
@@ -41,7 +41,7 @@ class ShopDialog : DialogFragment(){
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialogBuilder = AlertDialog.Builder(requireContext())
-        dialogBuilder.setTitle("Item Dialog")
+        dialogBuilder.setTitle(getString(R.string.create_a_new_item))
         val dialogView = requireActivity().layoutInflater.inflate(
             R.layout.shop_dialog, null
         )
@@ -72,14 +72,14 @@ class ShopDialog : DialogFragment(){
             etPrice.setText(listItem.itemPrice)
             etDescription.setText(listItem.itemDescription)
 
-            dialogBuilder.setTitle("Edit Item")
+            dialogBuilder.setTitle(getString(R.string.edit_item))
         }
 
-        dialogBuilder.setPositiveButton("Add Item"){
+        dialogBuilder.setPositiveButton(getString(R.string.add_item)){
             dialog, which ->
         }
 
-        dialogBuilder.setNegativeButton("Cancel Item"){
+        dialogBuilder.setNegativeButton(getString(R.string.cancel_item)){
             dialog, which ->
         }
 
@@ -101,7 +101,7 @@ class ShopDialog : DialogFragment(){
                 }
                 dialog!!.dismiss()
             }else{
-                etItemName.error = "This field can not be empty"
+                etItemName.error = getString(R.string.item_name_error)
             }
         }
     }

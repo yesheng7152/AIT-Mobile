@@ -3,6 +3,7 @@ package hu.ait.shoppinglist
 import android.app.ProgressDialog.show
 import android.content.Context
 import android.os.Bundle
+import android.os.Handler
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -13,13 +14,14 @@ import hu.ait.shoppinglist.data.AppDatabase
 import hu.ait.shoppinglist.data.Item
 import kotlinx.android.synthetic.main.activity_main.*
 import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt
+import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetSequence
 import java.sql.Date
 
 class MainActivity : AppCompatActivity(),ShopDialog.ItemHandler {
 
     lateinit var itemAdapter: ItemAdapter
 
-    companion object{
+    companion object {
         const val KEY_EDIT = "KEY_EDIT"
         const val PREF_NAME = "PREFTODO"
         const val KEY_STARTED = "KEY_STARTED"
@@ -31,28 +33,39 @@ class MainActivity : AppCompatActivity(),ShopDialog.ItemHandler {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
+
         initRecyclerView()
 
     }
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_main,menu)
-        //if(!wasStartedBefore()) {
-            //tutorial view set up
-            MaterialTapTargetPrompt.Builder(this)
-                .setTarget(R.id.add_Item)
-                .setPrimaryText("Create Item")
-                .setSecondaryText("Click here to create new shopping items").show()
-       // }
 
-       // saveStartInfo()
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        if (!wasStartedBefore()) {
+            Handler().post {
+                MaterialTapTargetSequence().addPrompt(
+                        MaterialTapTargetPrompt.Builder(this)
+                            .setTarget(R.id.add_Item)
+                            .setPrimaryText(getString(R.string.create_item))
+                            .setSecondaryText(getString(R.string.click_to_create_new))
+                            .create(), 4000
+                    )
+                    .addPrompt(
+                        MaterialTapTargetPrompt.Builder(this)
+                            .setTarget(R.id.delete_All)
+                            .setPrimaryText(getString(R.string.delete_list))
+                            .setSecondaryText(getString(R.string.click_to_delete_list))
+                            .create(), 4000
+                    ).show()
+            }
+        }
+        saveStartInfo()
         return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.add_Item){
+        if (item.itemId == R.id.add_Item) {
             showAddShopDialog()
-
-        }else if(item.itemId ==R.id.delete_All){
+        } else if (item.itemId == R.id.delete_All) {
             deleteAll()
         }
         return super.onOptionsItemSelected(item)
@@ -68,10 +81,6 @@ class MainActivity : AppCompatActivity(),ShopDialog.ItemHandler {
 
     fun wasStartedBefore() : Boolean {
         var sharedPref = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
-
-        var lastTime = sharedPref.getString(KEY_LAST_USED, "This is the first time")
-        Toast.makeText(this, lastTime, Toast.LENGTH_LONG).show()
-
         return sharedPref.getBoolean(KEY_STARTED, false)
     }
 

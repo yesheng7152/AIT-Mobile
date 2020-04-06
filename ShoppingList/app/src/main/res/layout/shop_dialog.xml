@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
 
     <EditText
         android:id="@+id/etName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Item Name"
+        android:hint="@string/item_name"
         />
+
+    <TextView
+        android:id="@+id/tvType"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/select_item_type"/>
 
     <Spinner
         android:id="@+id/spCategory"
@@ -20,21 +28,21 @@
         android:id="@+id/etPrice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Estimated Price"
+        android:hint="@string/estimated_price"
         />
 
     <EditText
         android:id="@+id/etDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Item Description"
+        android:hint="@string/item_description"
         />
 
     <CheckBox
         android:id="@+id/cbAlreadyDone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Alredy Purchased"
+        android:text="@string/alredy_purchased"
         />
 
 
