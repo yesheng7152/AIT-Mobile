@@ -4,13 +4,16 @@
     tools:context="hu.ait.shoppinglist.MainActivity">
 
     <item
-        android:id="@+id/deleteAll"
-        android:title="Delete All"
-        app:showAsAction="always|withText"/>
-    <item
-        android:id="@+id/addItem"
+        android:id="@+id/add_Item"
         app:showAsAction="always|withText"
         android:title="Add Item"
+        android:icon="@drawable/baseline_add_black_18dp"
         />
+    <item
+        android:id="@+id/delete_All"
+        android:title="Delete All"
+        app:showAsAction="always|withText"
+        android:icon="@drawable/baseline_clear_black_18dp"/>
+
 
 </menu>

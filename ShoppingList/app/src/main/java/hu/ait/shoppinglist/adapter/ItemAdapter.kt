@@ -71,6 +71,11 @@ class ItemAdapter : RecyclerView.Adapter<ItemAdapter.ViewHolder>{
         notifyItemChanged(editIndex)
     }
 
+    public fun removeAll(){
+        listItem.clear()
+        notifyDataSetChanged()
+    }
+
     private fun deleteItem(position: Int){
         Thread{
             AppDatabase.getInstance(context).itemDao().deleteItem(

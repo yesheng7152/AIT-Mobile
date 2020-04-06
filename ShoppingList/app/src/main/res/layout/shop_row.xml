@@ -10,6 +10,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/relative"
         android:orientation="vertical">
 
         <ImageView
@@ -23,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="item Name"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:layout_toRightOf="@+id/ivIcon"
             />
 
@@ -40,7 +41,7 @@
             android:id="@+id/btnDelete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/tvName"
+            android:layout_below="@id/ivIcon"
             android:text="Delete"/>
         <Button
             android:id="@+id/btnEdit"
@@ -48,6 +49,7 @@
             android:layout_height="wrap_content"
             android:text="Edit"
             android:layout_toRightOf="@+id/btnDelete"
+            android:layout_below="@id/ivIcon"/>
 
     </RelativeLayout>
 

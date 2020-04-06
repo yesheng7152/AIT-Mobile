@@ -11,5 +11,7 @@ data class Item(
     @PrimaryKey(autoGenerate = true) var itemId: Long?,
     @ColumnInfo(name = "category") var itemCategory: Int,
     @ColumnInfo(name = "itemName") var itemName: String,
-    @ColumnInfo(name = "done") var done: Boolean
+    @ColumnInfo(name = "done") var done: Boolean,
+    @ColumnInfo(name = "description") var itemDescription: String,
+    @ColumnInfo(name = "price") var itemPrice: String
 ) : Serializable
