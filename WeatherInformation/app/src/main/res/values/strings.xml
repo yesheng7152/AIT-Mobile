@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Weather Information</string>
+    <string name="action_settings">Settings</string>
+    <string name="city_not_found_error">city not found, enter a different city name</string>
+    <string name="Weather_title">\'s Weather</string>
+    <string name="celsius">°C</string>
+    <string name="Dialog_title">Enter City Name</string>
+    <string name="OK">OK</string>
+    <string name="Cancel">Cancel</string>
+    <string name="weather_information">Weather Information:</string>
+    <string name="information">Information</string>
+    <string name="description">Description:</string>
+    <string name="none">None</string>
+    <string name="temperature">Temperature:</string>
+    <string name="pressure">Pressure:</string>
+    <string name="humidity">Humidity:</string>
+    <string name="min_temperature">Min Temperature:</string>
+    <string name="max_temperature">Max Temperature:</string>
+    <string name="city_name">City Name</string>
+    <string name="click_city_name_for_detail">Click City Name for Detail ...</string>
+</resources>

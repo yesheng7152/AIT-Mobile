@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="20dp"
+    android:orientation="vertical"
+    tools:context=".DetailActivity">
+
+    <ImageView
+        android:id="@+id/ivWeahter"
+        android:layout_centerHorizontal="true"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_margin="20dp"
+        />
+
+    <TextView
+        android:id="@+id/textWeather"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/weather_information"
+        android:layout_below="@+id/ivWeahter"
+        />
+
+    <TextView
+        android:id="@+id/tvWeather"
+        android:textSize="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/information"
+        android:layout_below="@+id/textWeather"
+        />
+
+    <TextView
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:id="@+id/textDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/description"
+        android:layout_below="@+id/tvWeather"
+        />
+    <TextView
+        android:textSize="16sp"
+        android:id="@+id/tvDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/none"
+        android:layout_below="@+id/textDescription"
+        />
+
+    <TextView
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:id="@+id/textTemp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/tvWeather"
+        android:text="@string/temperature"/>
+
+    <TextView
+        android:textSize="16sp"
+        android:id="@+id/tvTemp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/textTemp"
+        android:text="@string/none"/>
+
+    <TextView
+        android:id="@+id/textPressure"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/pressure"
+        android:layout_below="@id/tvDescription"
+        />
+
+    <TextView
+        android:id="@+id/tvPressure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/none"
+        android:layout_below="@id/textPressure"
+        />
+
+    <TextView
+        android:id="@+id/textHumidity"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="@string/humidity"
+        android:layout_below="@id/tvDescription"
+        />
+
+    <TextView
+        android:id="@+id/tvHumidity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="@string/none"
+        android:layout_below="@id/textHumidity"
+        />
+
+    <TextView
+        android:id="@+id/textMinTemp"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/min_temperature"
+        android:layout_below="@id/tvPressure"
+        />
+    <TextView
+        android:id="@+id/tvMinTemp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/none"
+        android:layout_below="@id/textMinTemp"
+        />
+
+    <TextView
+        android:id="@+id/textMaxTemp"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/max_temperature"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/tvPressure"
+        />
+
+    <TextView
+        android:id="@+id/tvMaxTemp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/none"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/textMaxTemp"
+        />
+
+    <fragment
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:id="@+id/fgmap"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tvMaxTemp"
+        />
+
+
+
+
+</RelativeLayout>
