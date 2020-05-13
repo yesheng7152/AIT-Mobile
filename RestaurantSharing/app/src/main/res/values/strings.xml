@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">RestaurantSharing</string>
+    <string name="title_activity_form">FormActivity</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string-array name="cuisine">
+        <item>Chinese Food</item>
+        <item>Mexican Food</item>
+        <item>Italian Food</item>
+        <item>Japanese Food</item>
+        <item>Greek Food</item>
+        <item>French Food</item>
+        <item>Thai Food</item>
+        <item>Spanish Food</item>
+        <item>Indian Food</item>
+        <item>Mediterranean  Food</item>
+        <item>Other Food</item>
+    </string-array>
+</resources>
