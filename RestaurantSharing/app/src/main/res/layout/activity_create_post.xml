@@ -91,6 +91,54 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         >
+        <TextView
+            android:id="@+id/tvPhtotoAttach"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Photo from the Restaurant"
+            />
+        <ImageView
+            android:id="@+id/ivImg1"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/ic_action_attach"
+            android:clickable="true"
+            android:layout_below="@+id/tvPhtotoAttach"/>
+
+
+            <Button
+                android:layout_below="@+id/ivImg1"
+                android:id="@+id/btn_find"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Find"
+                android:layout_alignParentRight="true" />
+
+            <EditText
+                android:layout_below="@+id/ivImg1"
+                android:id="@+id/et_location"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:hint="Enter the location"
+                android:layout_toLeftOf="@id/btn_find" />
+    </RelativeLayout>
+
+
+        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:map="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            tools:context=".CreatePostActivity" />
+
+
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    >
         <Button
             android:id="@+id/btnPost"
             android:layout_width="wrap_content"

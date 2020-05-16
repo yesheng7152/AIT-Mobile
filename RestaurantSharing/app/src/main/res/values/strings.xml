@@ -17,4 +17,5 @@
         <item>Mediterranean  Food</item>
         <item>Other Food</item>
     </string-array>
+    <string name="title_activity_maps">Map</string>
 </resources>
