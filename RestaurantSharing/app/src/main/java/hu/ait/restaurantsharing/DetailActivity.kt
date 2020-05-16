@@ -50,7 +50,6 @@ class DetailActivity : AppCompatActivity(), OnMapReadyCallback {
                     userMarker.title(tvRestaurantNameD.text.toString())
                     mMap.addMarker(userMarker)
                     mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userMarker.position,16f))
-                    Toast.makeText(this, restaurantLatLng.longitude.toString(),Toast.LENGTH_LONG).show()
                 }
             }
         }

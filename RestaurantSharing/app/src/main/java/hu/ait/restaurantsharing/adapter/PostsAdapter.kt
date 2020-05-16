@@ -2,9 +2,12 @@ package hu.ait.restaurantsharing.adapter
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
 import hu.ait.restaurantsharing.DetailActivity
@@ -13,11 +16,14 @@ import hu.ait.restaurantsharing.data.Post
 import kotlinx.android.synthetic.main.post_row.view.*
 
 
-class PostsAdapter : RecyclerView.Adapter<PostsAdapter.ViewHolder>{
+class PostsAdapter : RecyclerView.Adapter<PostsAdapter.ViewHolder>, Filterable{
     lateinit var context: Context
     lateinit var currentUid: String
+
     var postsList = mutableListOf<Post>()
     var postsKeys = mutableListOf<String>()
+    var postListSearch = mutableListOf<Post>()
+    var postKeySearch = mutableListOf<String>()
 
     constructor(context: Context, uid: String) : super(){
         this.context = context
@@ -76,6 +82,7 @@ class PostsAdapter : RecyclerView.Adapter<PostsAdapter.ViewHolder>{
     fun addPost(post: Post, key: String){
         postsList.add(post)
         postsKeys.add(key)
+        postListSearch.add(post)
         notifyDataSetChanged()
     }
 
@@ -87,8 +94,11 @@ class PostsAdapter : RecyclerView.Adapter<PostsAdapter.ViewHolder>{
     fun removePostsByKey(key: String){
         var index = postsKeys.indexOf(key)
         if (index != -1){
+            var deletePost = postListSearch.indexOf(postsList[index])
+            postListSearch.removeAt(deletePost)
             postsList.removeAt(index)
             postsKeys.removeAt(index)
+            postKeySearch.removeAt(postKeySearch.indexOf(key))
             notifyItemRemoved(index)
         }
     }
@@ -101,5 +111,58 @@ class PostsAdapter : RecyclerView.Adapter<PostsAdapter.ViewHolder>{
         var rbRating = postView.rbRatingV
         var cardView = postView.card_view
         var tvPriceRange = postView.tvPriceRange
+    }
+
+    fun searchList(){
+        if(postListSearch.isEmpty()){
+            for(post in postsList){
+                postListSearch.add(post)
+            }
+        }
+        if(postKeySearch.isEmpty()){
+            for(key in postsKeys){
+                postKeySearch.add(key)
+            }
+        }
+    }
+
+    override fun getFilter(): Filter {
+        searchList()
+        return exampleFilter
+    }
+
+    private val exampleFilter: Filter = object : Filter() {
+        override fun performFiltering(constraint: CharSequence?): FilterResults {
+            val filteredList: MutableList<Post> = ArrayList()
+            val filterKeyList: MutableList<String> = ArrayList()
+            if (constraint == null || constraint.length == 0) {
+                filteredList.addAll(postListSearch)
+                filterKeyList.addAll(postKeySearch)
+            } else {
+                val filterPattern =
+                    constraint.toString().toLowerCase().trim { it <= ' ' }
+                for(i in 0 until postListSearch.size){
+                    if (postListSearch[i].restaurantName.toLowerCase().contains(filterPattern)) {
+                        filteredList.add(postListSearch[i])
+                        filterKeyList.add(postKeySearch[i])
+                    }
+                }
+            }
+            val combList = mutableListOf<Any>(filteredList,filterKeyList)
+            val results = FilterResults()
+            results.values = combList
+            return results
+        }
+
+        override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+            postsList.clear()
+            postsKeys.clear()
+            var filteredLists = results?.values as MutableList<Any>
+            var postListFiltered = filteredLists[0] as ArrayList<Post>
+            var keyListFiltered = filteredLists[1] as ArrayList<String>
+            postsList.addAll(postListFiltered)
+            postsKeys.addAll(keyListFiltered)
+            notifyDataSetChanged()
+        }
     }
 }
