@@ -1,19 +1,26 @@
 package hu.ait.restaurantsharing.adapter
 
+import android.content.ClipData.Item
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
 import hu.ait.restaurantsharing.DetailActivity
 import hu.ait.restaurantsharing.R
 import hu.ait.restaurantsharing.data.Post
 import kotlinx.android.synthetic.main.post_row.view.*
+import java.util.*
+import kotlin.Comparator
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
 
 class PostsAdapter : RecyclerView.Adapter<PostsAdapter.ViewHolder>, Filterable{
@@ -103,6 +110,29 @@ class PostsAdapter : RecyclerView.Adapter<PostsAdapter.ViewHolder>, Filterable{
         }
     }
 
+    fun declareMap():HashMap<Int, Float>{
+        var map = HashMap<Int, Float>()
+        for (i in 0 until postsList.size){
+            map.put(i,postsList[i].rating)
+        }
+        return map
+    }
+    fun sortByRating(map: HashMap<Int, Float>) {
+        var sortedMap=map.toList().sortedBy { (_, value) -> value}.toMap()
+        var indexList = ArrayList(sortedMap.keys)
+
+        var keyList = ArrayList<String>()
+        for (i in 0 until indexList.size){
+            var index = indexList[i].toString()
+            keyList.add(postsKeys[index.toInt()])
+        }
+
+        postsKeys = keyList
+        postsList.sortBy { it.rating }
+        notifyDataSetChanged()
+    }
+
+
     inner class ViewHolder(postView: View) : RecyclerView.ViewHolder(postView){
         var tvAuthor = postView.tvAuthor
         var tvRestaurantName = postView.tvRestaurantName
@@ -111,6 +141,18 @@ class PostsAdapter : RecyclerView.Adapter<PostsAdapter.ViewHolder>, Filterable{
         var rbRating = postView.rbRatingV
         var cardView = postView.card_view
         var tvPriceRange = postView.tvPriceRange
+    }
+
+    fun updateSearchList(){
+        postListSearch.clear()
+        postKeySearch.clear()
+        for(post in postsList){
+            postListSearch.add(post)
+        }
+        for(key in postsKeys){
+            postKeySearch.add(key)
+        }
+
     }
 
     fun searchList(){

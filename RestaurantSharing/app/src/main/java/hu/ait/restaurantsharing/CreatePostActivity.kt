@@ -83,17 +83,21 @@ class CreatePostActivity : AppCompatActivity(), OnMapReadyCallback {
 
                     }
                 }else{
-                    Toast.makeText(this, "Location does not exist", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, getString(R.string.Location_not), Toast.LENGTH_LONG).show()
                 }
             }else{
-                et_location.setError("Please enter Restaurant Location")
+                et_location.setError(getString(R.string.enter_res_location))
             }
         }
 
 
         btnPost.setOnClickListener {
-            sendClick(it)
-            finish()
+            if(isEmpty(etRestaurant.text)){
+                etRestaurant.setError(getString(R.string.enter_rest_name))
+            }else {
+                sendClick(it)
+                finish()
+            }
         }
 
         btnCancel.setOnClickListener{
@@ -137,9 +141,10 @@ class CreatePostActivity : AppCompatActivity(), OnMapReadyCallback {
             val hasPerm = pm.checkPermission(Manifest.permission.CAMERA, packageName)
             if (hasPerm == PackageManager.PERMISSION_GRANTED) {
                 val options =
-                    arrayOf<CharSequence>("Take Photo", "Choose From Gallery", "Cancel")
+                    arrayOf<CharSequence>(getString(R.string.take_photo), getString(R.string.from_gallery), getString(
+                                            R.string.cancel))
                 val builder = AlertDialog.Builder(this)
-                builder.setTitle("Select Option")
+                builder.setTitle(getString(R.string.select_option))
                 builder.setItems(options,
                     DialogInterface.OnClickListener { dialog, item ->
                         if (options[item] == "Take Photo") {
@@ -160,7 +165,7 @@ class CreatePostActivity : AppCompatActivity(), OnMapReadyCallback {
                 builder.show()
             }
         } catch (e: Exception) {
-            Toast.makeText(this, "Camera Permission error", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.camera_per_error), Toast.LENGTH_SHORT).show()
             e.printStackTrace()
         }
     }
@@ -174,7 +179,7 @@ class CreatePostActivity : AppCompatActivity(), OnMapReadyCallback {
                     android.Manifest.permission.CAMERA
                 )
             ) {
-                Toast.makeText(this, "I need it for camera", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, getString(R.string.need_camera), Toast.LENGTH_LONG).show()
             }
             ActivityCompat.requestPermissions(
                 this, arrayOf(android.Manifest.permission.CAMERA),
@@ -221,23 +226,27 @@ class CreatePostActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
-    fun uploadPost(img1: String=""){
+    fun uploadPost(img1: String="") {
         var radioButton = findViewById<RadioButton>(rgButton.checkedRadioButtonId)
-        val post = Post(
-            FirebaseAuth.getInstance().currentUser!!.uid,
-            FirebaseAuth.getInstance().currentUser!!.email!!,
-            etRestaurant.text.toString(),
-            spCuisine.selectedItemPosition,
-            etDishes.text.toString(),
-            rbRating.rating,
-            radioButton.text.toString(),
-            img1,
-            ResLatLng.latitude,
-            ResLatLng.longitude
-        )
-        var postCollection = FirebaseFirestore.getInstance().collection("posts")
-        postCollection.add(post)
+        if (radioButton == null) {
+            Toast.makeText(this, getString(R.string.select_price_range), Toast.LENGTH_LONG).show()
+        } else {
+            val post = Post(
+                FirebaseAuth.getInstance().currentUser!!.uid,
+                FirebaseAuth.getInstance().currentUser!!.email!!,
+                etRestaurant.text.toString(),
+                spCuisine.selectedItemPosition,
+                etDishes.text.toString(),
+                rbRating.rating,
+                radioButton.text.toString(),
+                img1,
+                ResLatLng.latitude,
+                ResLatLng.longitude
+            )
+            var postCollection = FirebaseFirestore.getInstance().collection("posts")
+            postCollection.add(post)
 
+        }
     }
 
     private fun compressToBytes(uploadBitmap: Bitmap): ByteArray {

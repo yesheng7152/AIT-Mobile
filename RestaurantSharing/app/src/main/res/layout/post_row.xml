@@ -19,12 +19,12 @@
             android:id="@+id/tvAuthor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="User Name"/>
+            android:text="@string/user_name"/>
         <TextView
             android:id="@+id/tvRestaurantName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Restaurant Name"
+            android:text="@string/restaurant_name"
             android:textSize="20sp"
             android:textStyle="bold"
             android:layout_below="@+id/tvAuthor"/>
@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/rbRatingV"
             android:layout_below="@+id/tvRestaurantName"
-            android:text="Price"
+            android:text="@string/price"
             android:layout_marginLeft="20dp"
             android:id="@+id/tvPriceRange"/>
         <ImageView
@@ -54,7 +54,7 @@
             android:id="@+id/btnDelete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Delete"
+            android:text="@string/delete"
             android:layout_below="@+id/rbRatingV"/>
     </RelativeLayout>
 

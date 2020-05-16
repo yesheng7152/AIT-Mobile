@@ -1,11 +1,13 @@
 package hu.ait.restaurantsharing
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.SearchView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.*
@@ -52,6 +54,10 @@ class ForumActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.acAddPost) {
             startActivity(Intent(this, CreatePostActivity::class.java))
+        }
+        if(item.itemId == R.id.ratingSort){
+            postsAdapter.sortByRating(postsAdapter.declareMap())
+            postsAdapter.updateSearchList()
         }
         return super.onOptionsItemSelected(item)
     }

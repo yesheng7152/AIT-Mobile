@@ -2,6 +2,7 @@ package hu.ait.restaurantsharing
 
 import android.graphics.Point
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -36,12 +37,15 @@ class DetailActivity : AppCompatActivity(), OnMapReadyCallback {
                 if (document != null) {
                     tvRestaurantNameD.text = document.getString("restaurantName")
                     tvDishesD.text = document.getString("dishes")
+                    tvDishesD.setMovementMethod(ScrollingMovementMethod())
                     tvPriceRangeD.text = document.getString("priceRange")
                     tvCuisineType.text = cuisineArray[document.get("cuisine").toString().toInt()]
                     rbIndicatorD.rating = document.get("rating").toString().toFloat()
-                    if(document.get("img1")!=null){
+                    if(document.getString("img1")!=""){
                         ivImg1D.visibility = View.VISIBLE
                         Glide.with(this).load(document.get("img1")).into(ivImg1D)
+                    }else{
+                        ivImg1D.visibility = View.GONE
                     }
                     restaurantLatLng = LatLng(document.get("lat").toString().toDouble()
                         ,document.get("lng").toString().toDouble())

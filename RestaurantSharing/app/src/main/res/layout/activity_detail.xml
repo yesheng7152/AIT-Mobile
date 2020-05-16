@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Restaurant Name"
+        android:text="@string/restaurant_name"
         android:id="@+id/tvRestaurantNameD"
         android:textStyle="bold"
         android:textSize="30sp"
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:textSize="18sp"
         android:textStyle="italic"
-        android:text="price Rnage"/>
+        android:text="@string/price_rnage"/>
 
     <TextView
         android:id="@+id/tvCuisineType"
@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:textSize="18sp"
         android:textStyle="italic"
-        android:text="cuisine type"/>
+        android:text="@string/cuisine_type"/>
 
     <androidx.appcompat.widget.AppCompatRatingBar
         android:layout_width="wrap_content"
@@ -41,21 +41,25 @@
         android:id="@+id/rbIndicatorD"/>
 
     <TextView
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Recommended Dishes are:"
+        android:text="@string/recommended_dishes_are"
         android:textSize="16sp"
         android:textStyle="italic"
         />
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tvDishesD"
-        android:text="Dishes!!"
-        android:layout_gravity="center"
-        android:textSize="18sp"/>
+        android:text="@string/dishes"
+        android:gravity="center"
+        android:scrollbars="vertical"
+        android:maxLines="4"
+        android:textSize="18sp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/border"/>
 
     <ImageView
         android:id="@+id/ivImg1D"

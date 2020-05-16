@@ -14,7 +14,7 @@
         android:paddingLeft="24dp"
         android:paddingRight="24dp">
 
-        <ImageView android:src="@mipmap/ic_launcher"
+        <ImageView android:src="@drawable/resLogo"
             android:layout_width="wrap_content"
             android:layout_height="72dp"
             android:layout_marginBottom="24dp"
@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
                 android:text="123456"
-                android:hint="Password"/>
+                android:hint="@string/password"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
@@ -55,7 +55,7 @@
             android:layout_marginBottom="12dp"
             android:padding="12dp"
             android:onClick="loginClick"
-            android:text="Login"/>
+            android:text="@string/login"/>
 
         <Button
             android:id="@+id/btnRegister"
@@ -63,7 +63,7 @@
             android:layout_height="wrap_content"
             android:padding="12dp"
             android:onClick="registerClick"
-            android:text="Register"/>
+            android:text="@string/register"/>
 
     </LinearLayout>
 </ScrollView>

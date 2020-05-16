@@ -12,7 +12,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Please Enter Restaurant Name"
+        android:hint="@string/please_enter_restaurant_name"
         android:id="@+id/etRestaurant"
         android:layout_gravity="center"
         />
@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity= "center"
         android:layout_marginTop="10dp"
-        android:text="Please Select the Type of Cuisine "
+        android:text="@string/please_select_the_type_of_cuisine"
         />
     <Spinner
         android:id="@+id/spCuisine"
@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
-        android:text="Suggested Rating for This Restaurant:"/>
+        android:text="@string/suggested_rating_for_this_restaurant"/>
 
     <androidx.appcompat.widget.AppCompatRatingBar
         android:id="@+id/rbRating"
@@ -48,7 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Please Select the Price Range for This Restaurant:"
+        android:text="@string/please_select_the_price_range_for_this_restaurant"
         android:layout_marginTop="10dp"/>
 
     <RadioGroup
@@ -61,22 +61,22 @@
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="$1-$10"
+            android:text="@string/_1_10"
             android:id="@+id/rbCheap"/>
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="$10-$50"
+            android:text="@string/_10_50"
             android:id="@+id/rbRegular"/>
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="$50-$100"
+            android:text="@string/_50_100"
             android:id="@+id/rbExpensive"/>
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="$100+"
+            android:text="@string/_100"
             android:id="@+id/rbVeryExpensive"/>
     </RadioGroup>
 
@@ -84,8 +84,9 @@
         android:id="@+id/etDishes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="What are the Recommended Dishes"
+        android:hint="@string/what_are_the_recommended_dishes"
         android:inputType="textMultiLine"
+        android:maxLines="3"
         />
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -95,15 +96,15 @@
             android:id="@+id/tvPhtotoAttach"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Photo from the Restaurant"
+            android:text="@string/photo_from_the_restaurant"
             />
         <ImageView
             android:id="@+id/ivImg1"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:src="@drawable/ic_action_attach"
             android:clickable="true"
-            android:layout_below="@+id/tvPhtotoAttach"/>
+            android:layout_alignParentRight="true" />
 
 
             <Button
@@ -111,7 +112,7 @@
                 android:id="@+id/btn_find"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Find"
+                android:text="@string/find"
                 android:layout_alignParentRight="true" />
 
             <EditText
@@ -120,7 +121,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:hint="Enter the location"
+                android:hint="@string/enter_the_location"
                 android:layout_toLeftOf="@id/btn_find" />
     </RelativeLayout>
 
@@ -143,13 +144,13 @@
             android:id="@+id/btnPost"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Post"
+            android:text="@string/post"
             />
         <Button
             android:id="@+id/btnCancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cancel"
+            android:text="@string/cancel"
             android:layout_alignParentRight="true"
             />
     </RelativeLayout>
